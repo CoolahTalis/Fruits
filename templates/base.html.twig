@@ -1,19 +1,60 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="{{asset ("css/style.css")}}">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<title>
+			{% block title %}HUMMM LES BONS FRUITS !
+			{% endblock %}
+		</title>
+		{% block stylesheets %}{% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+	</head>
+	<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+
+		<div class="collapse navbar-collapse active" id="navbarColor03">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link text-light" href="{{path("Aliment")}}">Accueil
+						<span class="sr-only">(current)</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-light" href="{{path("Aliments")}}">Les fruits</a>
+				</li>
+				<li class="nav-item text-light">
+					<a href="{{path("filtreCalorie", {'calorie': 55}) }}" class=" nav-link text-light bg-dark">Filtrer par calories (+15)</a>
+				</li>
+			</div>
+			{% if not app.user %}
+				<li class="nav-item">
+					<a href="{{path('connexion')}}">
+						<button class="btn btn-primary nav-link text-light">Connexion</button>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{path('inscription')}}">
+						<button class="btn btn-info nav-link text-light">Inscription</button>
+					</a>
+				</li>
+			{% else %}
+				<li class="nav-item">
+					<a href="{{path('modif_aliment_creation')}}">
+						<button class="btn btn-success nav-link text-light">Ajouter des Fruits</button>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="{{path('deconnexion')}}">
+						<button class="btn btn-danger nav-link text-light">Deconnexion</button>
+					</a>
+				</li>
+			{% endif %}
+		</nav>
+		<body>
+			{% block body %}{% endblock %}
+
+		</body>
+{% block javascripts %}
+{% endblock %}
+	</html>

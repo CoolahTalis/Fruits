@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	LES BONS FRUITS !
+{% endblock %}
+
+{% block body %}
+
+	<div class="example-wrapper">
+		{% block titre %}
+			<h3 class="text-light d-flex justify-content-center">
+				<span class="bg-dark">LES FRUITS DELICIEUX
+					{% if isCalorie %}
+						PAR QUANTITES DE CALORIES
+					{% endif %}
+				</span>
+			</h3>
+		{% endblock %}
+
+					<a href="{{path("admin")}}" class="d-flex justify-content-center">
+						 <button class="btn btn-primary">  Ajout, modif, delete des aliments </button> 
+					</a>				</div>
+	</div>
+
+	<div class="section">
+		{% for aliment in aliments %}
+			<div class="card mr-2 mb-5 circle" style="width: 20rem;">
+				<img class="card-img-top bg-dark" src="{{ asset('images/'~ aliment.image ) }}" style="background-image: url('../images/assort.jpg')" alt="Card image cap">
+				<div class="card">
+					<h4 class="text-center">{{aliment.nom}}</h4>
+				</div>
+
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item bg-dark text-light">Prix :
+						{{aliment.prix}}</li>
+					<li class="list-group-item">Nombre de calorie :{{aliment.calorie}}</li>
+					<li class="list-group-item bg-dark text-light">Quantité de glucide :
+						{{aliment.glucide}}</li>
+					<li class="list-group-item">Quantité de Lipide :
+						{{ aliment.Lipide}}</li>
+					<li class="list-group-item bg-dark text-light">Quantité de proteine :
+						{{aliment.proteine}}</li>
+				</ul>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

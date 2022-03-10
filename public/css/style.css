@@ -1,0 +1,22 @@
+body {
+  margin:0;
+  padding:0;
+  background-image: url("../images/apple.jpg");
+}
+
+img {
+  height: 150px;
+  object-fit: contain;
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+  margin: 3em;
+  flex-wrap: wrap;
+}
+
+.nav-link{
+  text-decoration: none;
+  list-style-type: none;
+}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	LES BONS FRUITS !
+{% endblock %}
+
+
+{% block body %}
+
+	{% block titre %}
+		<h1 class="text-light">
+			<span class="bg-dark">
+				<b>ADMIN PANEL :</b>
+				 {% if not isModification %} AJOUTER UN ALIMENT  
+				{% else %}  MODIFICATION DE {{aliment.nom}}
+				{% endif %}
+			</span>
+		</h1>
+	{% endblock %}
+	
+    <div style="margin:2% 40%; color:white; background:gray">
+	{{ form_start(form) }}
+
+	{{form_widget(form)}}
+<input type="submit" class="btn btn-success" value="Enregistrer">
+	{{ form_end (form)}}
+    </div>
+
+{% endblock %}
